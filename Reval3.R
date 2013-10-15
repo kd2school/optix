@@ -145,4 +145,4 @@ summary(train.sub1)
 write.table(train.sub0, file = "train.sub0.csv", sep = ",")
 write.table(train.sub1, file = "train.sub1.csv", sep = ",")
  
-
+getwd()
