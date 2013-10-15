@@ -146,3 +146,10 @@ write.table(train.sub0, file = "train.sub0.csv", sep = ",")
 write.table(train.sub1, file = "train.sub1.csv", sep = ",")
  
 getwd()
+
+###################
+#For Cross Validation
+subset<- sample(nrow(train), nrow(train)*.8)
+subset_train <- german[subset,]
+subset_test <- german[-subset,]
+###########################
