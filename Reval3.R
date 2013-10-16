@@ -129,14 +129,16 @@ train[239944,]
 
 
 #http://www.ats.ucla.edu/stat/r/faq/subset_R.htm
-
+##################################################
+#get subsets of the data by 0 and 1
 train.sub0 <- subset(train, V321 == 0)
 train.sub1 <- subset(train, V321 > 0)
 
 summary(train.sub0)
 summary(train.sub1)
 
-install.packages("fBasics")
+
+#install.packages("fBasics")
 library(fBasics)
 train1.sum <- basicStats(train.sub0) # Common use of library
 train2.sum<- basicStats(train.sub1)
@@ -149,7 +151,7 @@ write.table(train.sub0, file = "train.sub0.csv", sep = ",")
 write.table(train.sub1, file = "train.sub1.csv", sep = ",")
  
 getwd()
-
+############################################################
 
 ###################
 #For Cross Validation
