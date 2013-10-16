@@ -122,10 +122,13 @@ train[1,]
 train[239941,]
 train[239944,]
 
-names(x.df)
-[1] "V1" "V2" "V3" "V4" "V5" "y"
-Subsetting rows using the subset function
-The subset function with a logical statement will let you subset the data frame by observations. In the following example the x.sub data frame contains only the observations for which the values of the variable y is greater than 2.
+#names(x.df)
+#[1] "V1" "V2" "V3" "V4" "V5" "y"
+#Subsetting rows using the subset function
+#The subset function with a logical statement will let you subset the data frame by observations. In the following example the x.sub data frame contains only the observations for which the values of the variable y is greater than 2.
+
+
+#http://www.ats.ucla.edu/stat/r/faq/subset_R.htm
 
 train.sub0 <- subset(train, V321 == 0)
 train.sub1 <- subset(train, V321 > 0)
@@ -146,6 +149,7 @@ write.table(train.sub0, file = "train.sub0.csv", sep = ",")
 write.table(train.sub1, file = "train.sub1.csv", sep = ",")
  
 getwd()
+
 
 ###################
 #For Cross Validation
