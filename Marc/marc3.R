@@ -1,3 +1,9 @@
+train <- read.csv("/Watson/tgmctrain.csv", header=F)
+eval <- read.csv("/Watson/tgmcevaluation.csv", header=F)
+trainM <- as.matrix(train);
+evalM <- as.matrix(eval);
+
+
 ptm <- proc.time()
 #Import training/evaluation set and create a matrix for both of them.
 train <- read.csv("C:/Users/Marc/Desktop/CMPE239/Watson/tgmctrain.csv", header=F);
@@ -7,6 +13,9 @@ eval <- read.csv("C:/Users/Marc/Desktop/CMPE239/Watson/tgmcevaluation.csv", head
 evalM <- as.matrix(eval);
 evalStats <- summary(eval);
 proc.time() - ptm
+
+
+
 
 #ptm <- proc.time()
 #trainM <- as.matrix(train);
@@ -32,6 +41,9 @@ while (i <= ncolumn){
   }
   i <- i + 1;
 }
+
+#This segment of code may be off - Vivek...
+#This code finds empty columns in the Eval set and then stores it to evalZ
 #print(deleted);
 evalZ <- numeric();
 i <- 1;
@@ -47,6 +59,15 @@ while (i <= ncolumn){
 }
 proc.time() - ptm
 
+
+deleted
+evalZ
+which(deleted!= evalZ)
+
+length(deleted)
+length(evalZ)
+length(unique(deleted, evalZ))
+
 #print(deleted);
 #print(evalZ);
 
@@ -54,4 +75,22 @@ ptm <- proc.time()
 library(Hmisc);
 corrTable <- rcorr(trainM, type="pearson");
 proc.time() - ptm
+
+
+
+#########################
+nrow(trainM)
+ncol(trainM)
+ptm <- proc.time()
+first<- glm(trainM[,249] ~ trainM[,1:248], family = binomial)
+proc.time() - ptm
+summary(first)
+ptm <- proc.time()
+#trainM <- as.matrix(train);
+
+
+prob.glm1.insample <- predict(credit.glm1, type = "response")
+predicted.glm1.insample <- prob.glm1.insample > 0.2
+predicted.glm1.insample <- as.numeric(predicted.glm1.insample)
+table(german_train$response, predicted.glm1.insample, dnn = c("Truth", "Predicted"))
 

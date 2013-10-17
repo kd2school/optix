@@ -1,6 +1,6 @@
 #tgmctrain <- read.csv("C:/Watson/tgmctrain.csv", header=F)
 
-#train <- read.csv("/Watson/tgmctrain.csv", header=F)
+train <- read.csv("/Watson/tgmctrain.csv", header=F)
 eval <- read.csv("/Watson/tgmcevaluation.csv", header=F)
 
 #rm(tgmctrain)
