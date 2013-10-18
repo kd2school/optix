@@ -3,7 +3,6 @@ eval <- read.csv("/Watson/tgmcevaluation.csv", header=F)
 trainM <- as.matrix(train);
 evalM <- as.matrix(eval);
 
-
 ptm <- proc.time()
 #Import training/evaluation set and create a matrix for both of them.
 train <- read.csv("C:/Users/Marc/Desktop/CMPE239/Watson/tgmctrain.csv", header=F);
@@ -62,7 +61,7 @@ proc.time() - ptm
 
 deleted
 evalZ
-which(deleted!= evalZ)
+#which(deleted!= evalZ)
 
 length(deleted)
 length(evalZ)
@@ -79,18 +78,22 @@ proc.time() - ptm
 
 
 #########################
+
+
 nrow(trainM)
 ncol(trainM)
 ptm <- proc.time()
 first<- glm(trainM[,249] ~ trainM[,1:248], family = binomial)
 proc.time() - ptm
 summary(first)
-ptm <- proc.time()
-#trainM <- as.matrix(train);
+#Error in `[[<-.data.frame`(`*tmp*`, i, value = c(2L, 3L, 4L, 5L, 6L, 7L,  : 
+#replacement has 59506112 rows, data has 239944
+#error - didn't work
+#user  system elapsed 
+#859.795   7.047 934.419 
 
-
-prob.glm1.insample <- predict(credit.glm1, type = "response")
-predicted.glm1.insample <- prob.glm1.insample > 0.2
-predicted.glm1.insample <- as.numeric(predicted.glm1.insample)
-table(german_train$response, predicted.glm1.insample, dnn = c("Truth", "Predicted"))
+#prob.glm1.insample <- predict(credit.glm1, type = "response")
+#predicted.glm1.insample <- prob.glm1.insample > 0.2
+#predicted.glm1.insample <- as.numeric(predicted.glm1.insample)
+#table(german_train$response, predicted.glm1.insample, dnn = c("Truth", "Predicted"))
 
