@@ -31,7 +31,7 @@ summary(preds)
 
 # glm - logistic regression
 #prostate.hex <- h2o.importURL(h2o, path = "https://raw.github.com/0xdata/h2o/master/smalldata/logreg/prostate.csv", key = "prostate.hex")
-prostate.hex <- h2o.importFile(h2o, path = "/Users/earl/work/h2o/smalldata/logreg/prostate.csv", key = "prostate.hex")
+prostate.hex <- h2o.importFile(h2o, path = "/Volumes/Windows/h2o/smalldata/logreg/prostate.csv", key = "prostate.hex")
 
 # lets poke at the data a bit:
 c( nrow(prostate.hex), ncol(prostate.hex) )
@@ -54,6 +54,36 @@ summary(prostate.pred)
 prostate.rf <- h2o.randomForest(y='CAPSULE', data=prostate.hex, ntree=10, depth=5)
 
 
+
+
+
+# glm - logistic regression
+#prostate.hex <- h2o.importURL(h2o, path = "https://raw.github.com/0xdata/h2o/master/smalldata/logreg/prostate.csv", key = "prostate.hex")
+train.hex <- h2o.importFile(h2o, path = "/Volumes/Windows/h2o/smalldata/logreg/prostate.csv", key = "prostate.hex")
+train.hex <- h2o.importFile(h2o, path='/Watson/tgmctrain.csv', key = train.hex)
+airlines <- h2o.importFile(h2o, path='/Watson/tgmctrain.csv')
+
+
+
+# lets poke at the data a bit:
+c( nrow(prostate.hex), ncol(prostate.hex) )
+summary( prostate.hex )
+head( prostate.hex )
+tail( prostate.hex )
+
+# notice that RACE imports as an integer in {0,1,2}; we want it to be a factor
+h2o.factor(prostate.hex, 'RACE')
+
+prostate.glm = h2o.glm(y = "CAPSULE", x = c("AGE","RACE","PSA","GLEASON"), data = prostate.hex, family = "binomial", nfolds = 10, alpha = 0.5)
+print(prostate.glm)
+# note RACE.1, RACE.2
+
+# predicting on itself, but let's get a prediction out
+prostate.pred <- h2o.predict(prostate.glm, prostate.hex)
+summary(prostate.pred)
+
+
+prostate.rf <- h2o.randomForest(y='CAPSULE', data=prostate.hex, ntree=10, depth=5)
 
 
 
