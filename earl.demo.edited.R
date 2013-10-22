@@ -60,6 +60,7 @@ prostate.rf <- h2o.randomForest(y='CAPSULE', data=prostate.hex, ntree=10, depth=
 # glm - logistic regression
 #prostate.hex <- h2o.importURL(h2o, path = "https://raw.github.com/0xdata/h2o/master/smalldata/logreg/prostate.csv", key = "prostate.hex")
 train.hex <- h2o.importFile(h2o, path='/Watson/tgmctrain.csv', key = "tgmctrain.hex")
+train.hex <- h2o.importFile(h2o, path='/Watson/train.csv', key = "tgmctrain.hex")
 
 
 
