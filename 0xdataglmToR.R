@@ -11,3 +11,31 @@ y = 1/(1 + exp(-(-2.0176*x[2] + 0.0781*x[3] + 0.1635*x[6] + -0.4644*x[7] + 0.302
 summary(y)
 hist(y$V3)
 #cutoff suggested was .01
+y
+str(y)
+pcut<-.8
+k<-numeric()
+j<-1
+for(i in 1:length(y$V3))
+{
+  if(y$V3[i]>pcut)
+  {
+    k[j]<-i
+    j <- j+1
+  }
+}
+
+#str(tgmcevaluation)
+j<-1
+num<-nrow(tgmcevaluation)
+finals<- numeric()
+for(i in 1:num){
+ if(i == k[j])
+ {
+   finals[j] <- tgmcevaluation$V1[i]
+   j<- j + 1
+ }
+}
+
+length(finals)
+write.csv(finals, file = "submission1.csv")
