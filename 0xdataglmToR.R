@@ -21,7 +21,7 @@ hist(y)
 
 y
 str(y)
-pcut<-.135
+pcut<-.14
 k<-numeric()
 j<-1
 for(i in 1:length(y$V3))
@@ -95,3 +95,15 @@ write.table(finals, file = "watsonsubmission10.txt", row.names = FALSE, col.name
 #pcut = .135
 #length = 277
 #Score =  127
+
+write.table(finals, file = "watsonsubmission11.txt", row.names = FALSE, col.names = FALSE)
+#binomial -logistic -  alpha = .3 weight = 10
+#pcut = .130
+#length = 289
+#Score =  125
+
+write.table(finals, file = "watsonsubmission12.txt", row.names = FALSE, col.names = FALSE)
+#binomial -logistic -  alpha = .3 weight = 10
+#pcut = .14
+#length = 272
+#Score = 128
