@@ -7,12 +7,7 @@ str(watsonsubmission5)
 
 wat12 <- read.table("/Volumes/Windows/optix/submission/watsonsubmission12.txt", quote="\"")
 
-
-nrow(wat5)
-nrow(wat4)
-wat<- merge(wat5, wat4)
 #http://hosho.ees.hokudai.ac.jp/~kubo/Rdoc/library/plyr/html/join.html
-
 watfull<-join(wat4, wat12, type = "full")
 watleft<-join(wat4, wat12, type = "left")
 watright<-join(wat4, wat12, type = "right")
@@ -35,6 +30,15 @@ write.table(watright, file = "watsonsubmission15.txt", row.names = FALSE, col.na
 nrow(watright)
 #length = 272
 #Score = 128
+
+nrow(watinner)
+
+#watinner - a combo of RF and Logistic Reg - sub 5 and sub 12
+write.table(watinner, file = "watsonsubmission16.txt", row.names = FALSE, col.names = FALSE)
+nrow(watinner)
+#length = 207
+#Score = 109
+
 
 str(wat)
 wat
